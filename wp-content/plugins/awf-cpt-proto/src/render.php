@@ -1,3 +1,7 @@
-<p <?php echo get_block_wrapper_attributes(); ?>>
-	<?php esc_html_e( 'Awf Cpt Proto – hello from a dynamic block!', 'awf-cpt-proto' ); ?>
-</p>
+<?php
+global $post;
+$description = get_post_meta( $post->ID, 'description', true );
+?>
+<div  <?php echo get_block_wrapper_attributes(); ?>>
+  <p><?php echo $description; ?></p>
+</div>
