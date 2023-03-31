@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,14 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from "@wordpress/block-editor";
+
+/**
+ * can be used by the blocks to get or change meta values.
+ *
+ * @see
+ */
+import { useEntityProp } from "@wordpress/core-data";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -19,7 +26,7 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import "./editor.scss";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -29,10 +36,27 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit({ context: { postType, postId } }) {
+	const [meta, updateMeta] = useEntityProp(
+		"postType",
+		"project",
+		"meta",
+		postId
+	);
+	const { description } = meta;
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Awf Cpt Proto – hello from the editor!', 'awf-cpt-proto' ) }
-		</p>
+		<div {...useBlockProps()}>
+			<RichText
+				placeholder={__("Enter project description", "awebfactory")}
+				tagName="p"
+				value={description}
+				onChange={(newDescriptionContent) =>
+					updateMeta({
+						...meta,
+						description: newDescriptionContent,
+					})
+				}
+			/>
+		</div>
 	);
 }
