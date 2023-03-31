@@ -5,7 +5,7 @@
 	"version": "0.1.0",
 	"title": "Awf Cpt Proto",
 	"category": "text",
-	"icon": "smiley",
+	"icon": "schedule",
 	"description": "A custom block for editing and rendering a cpt and its fields stored as post meta.",
 	"supports": {
 		"html": false
