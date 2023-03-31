@@ -8,8 +8,10 @@
 	"icon": "schedule",
 	"description": "A custom block for editing and rendering a cpt and its fields stored as post meta.",
 	"supports": {
-		"html": false
+		"html": false,
+		"multiple": false
 	},
+	"usesContext": ["postId", "postType"],
 	"textdomain": "awf-cpt-proto",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
