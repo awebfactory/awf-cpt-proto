@@ -120,3 +120,4 @@ build/
 # !wp-content/plugins/ka-example-block
 # !wp-content/plugins/metadata-block
 # !wp-content/plugins/post-meta-testimonial
+!wp-content/plugins/awf-cpt-proto

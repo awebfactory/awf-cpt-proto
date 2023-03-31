@@ -2,7 +2,7 @@
 
 AWebFactory plugin to prototype support for custom post types in WordPress.
 
-How are we going to handle CPT's, including their custom post type item creation and meta data entry?
+## How are we going to handle CPT's, including their custom post type item creation and meta data entry?
 
 [Tweet thread announcing repo](https://twitter.com/a_web_factory/status/1641756356989288448), content will be moved to demo site when there's something to demo
 
@@ -43,3 +43,11 @@ Sooooo, let's get this prototype on the road with code-based cpt registration, w
 > Until progress is made to warrant a demo, see [atomic commits](https://github.com/awebfactory/awf-cpt-proto/commits/main) to `main` in order to follow the steps I'm taking
 >
 > Also [Discussions](https://github.com/awebfactory/awf-cpt-proto/discussions) are open!
+
+## References and shout outs (in chronological order of usage for this project)
+
+- [Learn WordPress Courses](https://learn.wordpress.org/courses/)
+  - [Introduction to Block Development: Build your first custom block](https://learn.wordpress.org/courses/)
+  - [Using the WordPress Data Layer](https://learn.wordpress.org/courses/)
+- Carlo Daniele, [Kinsta 2023-01-27 How To Add Meta Boxes and Custom Fields To Posts in Gutenberg](https://kinsta.com/blog/wordpress-add-meta-box-to-post/), January 27, 2023
+- Ryan Welcher, [Creating a custom block that stores post meta](https://developer.wordpress.org/news/2023/03/creating-a-custom-block-that-stores-post-meta/), [WordPress Developer Blog](https://developer.wordpress.org/news/), March 3, 2023

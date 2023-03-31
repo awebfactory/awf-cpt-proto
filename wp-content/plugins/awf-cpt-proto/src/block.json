@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "awebfactory/awf-cpt-proto",
+	"version": "0.1.0",
+	"title": "Awf Cpt Proto",
+	"category": "text",
+	"icon": "smiley",
+	"description": "A custom block for editing and rendering a cpt and its fields stored as post meta.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "awf-cpt-proto",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
