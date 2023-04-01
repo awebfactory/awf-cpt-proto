@@ -20,6 +20,8 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
  */
 import { useEntityProp } from "@wordpress/core-data";
 
+import { TextControl, DatePicker } from "@wordpress/components";
+
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -43,17 +45,48 @@ export default function Edit({ context: { postType, postId } }) {
 		"meta",
 		postId
 	);
-	const { awebfactory_project_description } = meta;
+	const {
+		awebfactory_project_short_name,
+		awebfactory_project_description,
+		awebfactory_project_start_date,
+		awebfactory_project_completion_date,
+	} = meta;
 	return (
 		<div {...useBlockProps()}>
+			<h6>{__("Project short name")}</h6>
+			<TextControl
+				value={awebfactory_project_short_name}
+				onChange={(newValue) =>
+					updateMeta({ ...meta, awebfactory_project_short_name: newValue })
+				}
+			/>
+			<h6>Start date</h6>
+			<DatePicker
+				currentDate={awebfactory_project_start_date}
+				onChange={(newValue) =>
+					updateMeta({ ...meta, awebfactory_project_start_date: newValue })
+				}
+				__nextRemoveHelpButton
+				__nextRemoveResetButton
+			/>
+			<h6>Estimated completion date</h6>
+			<DatePicker
+				currentDate={awebfactory_project_completion_date}
+				onChange={(newValue) =>
+					updateMeta({ ...meta, awebfactory_project_completion_date: newValue })
+				}
+				__nextRemoveHelpButton
+				__nextRemoveResetButton
+			/>
+			<h6>Project description</h6>
 			<RichText
 				placeholder={__("Enter project description", "awebfactory")}
 				tagName="p"
 				value={awebfactory_project_description}
-				onChange={(newAWFProjectDescriptionContent) =>
+				onChange={(newValue) =>
 					updateMeta({
 						...meta,
-						awebfactory_project_description: newAWFProjectDescriptionContent,
+						awebfactory_project_description: newValue,
 					})
 				}
 			/>
