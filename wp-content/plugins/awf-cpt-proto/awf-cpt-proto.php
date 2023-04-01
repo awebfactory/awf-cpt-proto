@@ -42,17 +42,20 @@ function awebfactory_awf_cpt_proto_block_init() {
       ),
     )
   );
-  register_post_meta(
-    'project',
-    'description',
-    array(
-      'show_in_rest'       => true,
-      'single'             => true,
-      'type'               => 'string',
-      'sanitize_callback'  => 'wp_kses_post',
-    )
-  );
+
+  $metafields = [ 'awebfactory_project_short_name', 'awebfactory_project_description', 'awebfactory_project_start_date', 'awebfactory_project_completion_date' ];
+
+  foreach( $metafields as $metafield ){
+    // Pass an empty string to register the meta key across all existing post types.
+    register_post_meta( '', $metafield, array(
+      'show_in_rest' => true,
+      'type' => 'string',
+      'single' => true,
+      'sanitize_callback' => 'wp_kses_post',
+      'auth_callback' => function() { 
+        return current_user_can( 'edit_posts' );
+      }
+    ));
+  }  
 }
 add_action( 'init', 'awebfactory_awf_cpt_proto_block_init' );
-
-

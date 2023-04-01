@@ -43,17 +43,17 @@ export default function Edit({ context: { postType, postId } }) {
 		"meta",
 		postId
 	);
-	const { description } = meta;
+	const { awebfactory_project_description } = meta;
 	return (
 		<div {...useBlockProps()}>
 			<RichText
 				placeholder={__("Enter project description", "awebfactory")}
 				tagName="p"
-				value={description}
-				onChange={(newDescriptionContent) =>
+				value={awebfactory_project_description}
+				onChange={(newAWFProjectDescriptionContent) =>
 					updateMeta({
 						...meta,
-						description: newDescriptionContent,
+						awebfactory_project_description: newAWFProjectDescriptionContent,
 					})
 				}
 			/>
