@@ -48,7 +48,7 @@ Sooooo, let's get this prototype on the road with code-based cpt registration, w
 
 - Experiment to scaffold a simple plugin `Multi-dynamic example` with multiple dynamic blocks (`multi-dynamic-example`) which supports multiple (dynamic) blocks
 - Based on [WordPress functions reference docs for register_block_type(), comment: How to write a plugin with multiple blocks](https://developer.wordpress.org/reference/functions/register_block_type/#comment-5954) which seems to me to be the most simple and straightforward, allowing for individual directories for each block in the `build` directory.
-- See commit 2023-04-06
+- See [commit 2023-04-06 chore(plugin multi-dynamic-example): Experimental plugin to explore how to build a single plugin that supports multiple dynamic blocks](https://github.com/awebfactory/awf-cpt-proto/commit/b40e9d1f33e3916957b800960150e7f1300eff2b)
 
 ## References and shout outs (in chronological order of usage for this project)
 
