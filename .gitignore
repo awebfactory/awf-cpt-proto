@@ -121,3 +121,4 @@ build/
 # !wp-content/plugins/metadata-block
 # !wp-content/plugins/post-meta-testimonial
 !wp-content/plugins/awf-cpt-proto
+!wp-content/plugins/multi-dynamic-example
