@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Awf Cpt Proto
- * Description:       A custom block for editing and rendering a cpt and its fields stored as post meta.
+ * Description:       Custom blocks for editing and rendering in varioius ways a CPT and its fields stored as post meta.
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.0
@@ -21,7 +21,7 @@
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function awebfactory_awf_cpt_proto_block_init() {
-  register_block_type( __DIR__ . '/build' );
+  register_block_type( __DIR__ . '/build/blocks/meta-fields-editor' );
   register_post_type(
     'project',
     array(

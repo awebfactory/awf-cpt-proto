@@ -1,9 +1,9 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "awebfactory/awf-cpt-proto",
+	"name": "awebfactory/meta-fields-editor",
 	"version": "0.1.0",
-	"title": "Awf Cpt Proto",
+	"title": "Meta Fields Editor",
 	"category": "text",
 	"icon": "schedule",
 	"description": "A custom block for editing and rendering a cpt and its fields stored as post meta.",
@@ -12,7 +12,7 @@
 		"multiple": false
 	},
 	"usesContext": ["postId", "postType"],
-	"textdomain": "awf-cpt-proto",
+	"textdomain": "meta-fields-editor",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
