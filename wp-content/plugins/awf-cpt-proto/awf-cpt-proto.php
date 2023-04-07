@@ -22,6 +22,7 @@
  */
 function awebfactory_awf_cpt_proto_block_init() {
   register_block_type( __DIR__ . '/build/blocks/meta-fields-editor' );
+  register_block_type( __DIR__ . '/build/blocks/render-single-meta-field' );
   register_post_type(
     'project',
     array(
