@@ -36,12 +36,12 @@ export default function Edit() {
 	const postTypeSlug = "project";
 	let projectMeta = new Array();
 	let projectMetaSize = 0;
+	const metaKeys = new Set();
 
 	// Fetch the post type's meta keys
 	apiFetch({ path: `/wp/v2/project?_fields=meta` })
 		.then((posts) => {
 			// console.log("prjs", posts);
-			const metaKeys = new Set();
 			posts.forEach((post) => {
 				// console.log("post", post);
 				Object.keys(post.meta).forEach((metaKey) => {
@@ -51,23 +51,21 @@ export default function Edit() {
 
 			// Loop through the meta keys and display the field types
 			if (metaKeys.size > 0) {
-				console.log("Custom field types (metaKeys):", metaKeys);
+				// console.log("Custom field types (metaKeys):", metaKeys);
 				metaKeys.forEach((metaKey) => {
 					// console.log("metakey", metaKey);
 					projectMeta[metaKey] = metaKey;
 					projectMetaSize = projectMetaSize + 1;
 				});
 			} else {
-				console.log("No custom fields found for this post type.");
+				// console.log("No custom fields found for this post type.");
 			}
-			console.log("Custom field types:");
-			console.log("projectMeta", projectMeta);
-			console.log("Size", projectMetaSize);
 		})
 		.catch((error) => {
 			console.error(error);
 		});
 	console.log("projectMeta", projectMeta);
+	console.log("projectMeta Size", projectMetaSize);
 	return (
 		<p {...useBlockProps()}>
 			{__(
