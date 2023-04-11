@@ -13,6 +13,8 @@ import { __ } from "@wordpress/i18n";
  */
 import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
 
+import apiFetch from "@wordpress/api-fetch";
+
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -30,6 +32,42 @@ import "./editor.scss";
  * @return {WPElement} Element to render.
  */
 export default function Edit() {
+	// Replace 'your_post_type_slug' with the slug of your custom post type
+	const postTypeSlug = "project";
+	let projectMeta = new Array();
+	let projectMetaSize = 0;
+
+	// Fetch the post type's meta keys
+	apiFetch({ path: `/wp/v2/project?_fields=meta` })
+		.then((posts) => {
+			// console.log("prjs", posts);
+			const metaKeys = new Set();
+			posts.forEach((post) => {
+				// console.log("post", post);
+				Object.keys(post.meta).forEach((metaKey) => {
+					metaKeys.add(metaKey);
+				});
+			});
+
+			// Loop through the meta keys and display the field types
+			if (metaKeys.size > 0) {
+				console.log("Custom field types (metaKeys):", metaKeys);
+				metaKeys.forEach((metaKey) => {
+					// console.log("metakey", metaKey);
+					projectMeta[metaKey] = metaKey;
+					projectMetaSize = projectMetaSize + 1;
+				});
+			} else {
+				console.log("No custom fields found for this post type.");
+			}
+			console.log("Custom field types:");
+			console.log("projectMeta", projectMeta);
+			console.log("Size", projectMetaSize);
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+	console.log("projectMeta", projectMeta);
 	return (
 		<p {...useBlockProps()}>
 			{__(
