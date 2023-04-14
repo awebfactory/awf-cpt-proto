@@ -33,6 +33,7 @@ function awebfactory_awf_cpt_proto_block_init() {
       'public'       => true,
 			'menu_icon'    => 'dashicons-schedule',
       'has_archive'  => true,
+      'rewrite' => array('slug' => 'projects'), // Set desired slug
       'show_in_rest' => true,
       'supports'     => array(
         'title',
