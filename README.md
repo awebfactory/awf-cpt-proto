@@ -57,3 +57,4 @@ Sooooo, let's get this prototype on the road with code-based cpt registration, w
   - [Using the WordPress Data Layer](https://learn.wordpress.org/courses/)
 - Carlo Daniele, [Kinsta 2023-01-27 How To Add Meta Boxes and Custom Fields To Posts in Gutenberg](https://kinsta.com/blog/wordpress-add-meta-box-to-post/), January 27, 2023
 - Ryan Welcher, [Creating a custom block that stores post meta](https://developer.wordpress.org/news/2023/03/creating-a-custom-block-that-stores-post-meta/), [WordPress Developer Blog](https://developer.wordpress.org/news/), March 3, 2023
+- Ryan Welcher, [YT Ryan Welcher 2022-10-19 Custom WordPress block that supports Advanced Custom Fields. Part One | section 04:29 Adding some controls for our block with InspectorControls](https://www.youtube.com/watch?v=3zJyjYIykQ4&t=355)
