@@ -12,7 +12,7 @@ import { __ } from "@wordpress/i18n";
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
-import { SelectControl } from "@wordpress/components";
+import { SelectControl, PanelBody } from "@wordpress/components";
 
 import { useState, useEffect } from "@wordpress/element";
 import apiFetch from "@wordpress/api-fetch";
@@ -81,17 +81,19 @@ export default function Edit({
 				))}
 			</ul>
 			<InspectorControls>
-				<SelectControl
-					label="Selected Post Type"
-					value={selectedPostType}
-					options={customPosts.map((customPost) => {
-						return { label: customPost.toUpperCase(), value: customPost };
-					})}
-					onChange={(newPostType) =>
-						setAttributes({ selectedPostType: newPostType })
-					}
-					__nextHasNoMarginBottom
-				/>
+				<PanelBody title={__("Select any field from any post type")}>
+					<SelectControl
+						label="Selected Post Type"
+						value={selectedPostType}
+						options={customPosts.map((customPost) => {
+							return { label: customPost.toUpperCase(), value: customPost };
+						})}
+						onChange={(newPostType) =>
+							setAttributes({ selectedPostType: newPostType })
+						}
+						__nextHasNoMarginBottom
+					/>
+				</PanelBody>
 			</InspectorControls>
 		</div>
 	);
