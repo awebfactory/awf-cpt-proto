@@ -38,6 +38,7 @@ export default function Edit({
 	attributes: { selectedPostType },
 	setAttributes,
 }) {
+	// console.log("selectedPostType", selectedPostType);
 	const [customPosts, setCustomPosts] = useState([]);
 
 	// Filters
@@ -83,11 +84,9 @@ export default function Edit({
 				<SelectControl
 					label="Selected Post Type"
 					value={selectedPostType}
-					options={[
-						{ label: "Post", value: "post" },
-						{ label: "Page", value: "page" },
-						{ label: "Project", value: "project" },
-					]}
+					options={customPosts.map((customPost) => {
+						return { label: customPost.toUpperCase(), value: customPost };
+					})}
 					onChange={(newPostType) =>
 						setAttributes({ selectedPostType: newPostType })
 					}
