@@ -12,9 +12,8 @@ import { __ } from "@wordpress/i18n";
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
+import { SelectControl } from "@wordpress/components";
 
-// import { useSelect } from "@wordpress/data";
-// Import the WordPress API module
 import { useState, useEffect } from "@wordpress/element";
 import apiFetch from "@wordpress/api-fetch";
 
@@ -35,7 +34,10 @@ import "./editor.scss";
  * @return {WPElement} Element to render.
  */
 
-export default function Edit() {
+export default function Edit({
+	attributes: { selectedPostType },
+	setAttributes,
+}) {
 	const [customPosts, setCustomPosts] = useState([]);
 
 	// Filters
@@ -77,7 +79,21 @@ export default function Edit() {
 					<li key={slug}>{slug}</li>
 				))}
 			</ul>
-			<InspectorControls>Inspector Control scaffolded</InspectorControls>
+			<InspectorControls>
+				<SelectControl
+					label="Selected Post Type"
+					value={selectedPostType}
+					options={[
+						{ label: "Post", value: "post" },
+						{ label: "Page", value: "page" },
+						{ label: "Project", value: "project" },
+					]}
+					onChange={(newPostType) =>
+						setAttributes({ selectedPostType: newPostType })
+					}
+					__nextHasNoMarginBottom
+				/>
+			</InspectorControls>
 		</div>
 	);
 }
