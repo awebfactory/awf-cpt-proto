@@ -35,11 +35,14 @@ import "./editor.scss";
  */
 
 export default function Edit({
-	attributes: { selectedPostType },
+	attributes: { selectedPostType, selectedPostField },
 	setAttributes,
 }) {
-	// console.log("selectedPostType", selectedPostType);
 	const [customPosts, setCustomPosts] = useState([]);
+	const [customPostFields, setCustomPostFields] = useState([]);
+
+	// console.log("selectedPostType", selectedPostType);
+	// console.log("customPostField", customPostField);
 
 	// Filters
 	const filterByDoesNotStartsWith = (item, doesNotStartsWith) => {
@@ -67,19 +70,27 @@ export default function Edit({
 			});
 	}, []);
 
+	// Fetch post meta fields for selectedPostType
+	useEffect(() => {
+		if (selectedPostType === "page" || selectedPostType === "post") {
+			console.log("no meta for post or page type");
+		} else {
+			apiFetch({ path: `/wp/v2/${selectedPostType}` })
+				.then((response) => {
+					const postTypeFieldKeys = Object.keys(response[0].meta);
+					// console.log("postTypeFieldKeys Meta", postTypeFieldKeys);
+					setCustomPostFields(postTypeFieldKeys);
+				})
+				.catch((error) => {
+					console.error(error);
+				});
+		}
+	}, [selectedPostType]);
+
 	return (
 		<div {...useBlockProps()}>
-			<p>
-				{__(
-					"Render Single Meta Field – hello from the editor!",
-					"render-single-meta-field"
-				)}
-			</p>
-			<ul>
-				{customPosts.map((slug) => (
-					<li key={slug}>{slug}</li>
-				))}
-			</ul>
+			{console.log("spf: ", selectedPostField)}
+			<span>This is {selectedPostField}</span>
 			<InspectorControls>
 				<PanelBody title={__("Select any field from any post type")}>
 					<SelectControl
@@ -90,6 +101,20 @@ export default function Edit({
 						})}
 						onChange={(newPostType) =>
 							setAttributes({ selectedPostType: newPostType })
+						}
+						__nextHasNoMarginBottom
+					/>
+					<SelectControl
+						label="Selected Post Type Field"
+						value={selectedPostField}
+						options={customPostFields.map((customPostField) => {
+							return {
+								label: customPostField.toUpperCase(),
+								value: customPostField,
+							};
+						})}
+						onChange={(newPostFieldType) =>
+							setAttributes({ selectedPostField: newPostFieldType })
 						}
 						__nextHasNoMarginBottom
 					/>
